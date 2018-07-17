@@ -70,7 +70,7 @@ namespace Sycamore.Dialogue.UI
 		{
 			string startText = additive ? (LastString + "\n") : string.Empty;
 			string finalText = startText + s;
-			int textLength = s.Length;
+			int textLength = finalText.Length;
 
 			// Have to store and check whether there's been input outside of the loop below
 			// because it will be pausing alot for the different typing delays.
@@ -88,14 +88,14 @@ namespace Sycamore.Dialogue.UI
 				if (anyKeyDown)
 					break;
 
-				char c = s[i];
+				char c = finalText[i];
 
 				if (c == '<')
 				{
 					while (finalText[i] != '>' && i < finalText.Length)
 					{
 						i++;
-						c = s[i];
+						c = finalText[i];
 					}
 				}
 				else
