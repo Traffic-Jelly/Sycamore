@@ -57,8 +57,8 @@ namespace Sycamore.Dialogue.UI
 			string text = info.statement.text;
 			var audio = info.statement.audio;
 			var endDelay = info.statement.endDelay;
-			bool additive = info.statement.additive;
-			bool waitForInput = info.statement.waitForInput;
+			bool additive = info.statement.meta.Contains ("additive");//info.statement.additive;
+			bool waitForInput = !info.statement.meta.Contains ("nowait");//info.statement.waitForInput;
 
 			Debug.Log ("End Delay:" + endDelay);
 			Debug.Log ("Additive:" + additive);
