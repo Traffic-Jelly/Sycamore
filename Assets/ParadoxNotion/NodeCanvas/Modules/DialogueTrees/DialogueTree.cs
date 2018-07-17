@@ -238,8 +238,6 @@ namespace NodeCanvas.DialogueTrees{
 			else Debug.LogWarning("<b>DialogueTree:</b> Multiple Choice Request event has no subscribers. Make sure to add the default '@DialogueGUI' prefab or create your own GUI.");
 		}
 
-
-
 		protected override void OnGraphStarted(){
 
 			previousDialogue = currentDialogue;

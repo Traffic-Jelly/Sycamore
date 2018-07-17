@@ -81,10 +81,7 @@ namespace Sycamore.Dialogue.UI
 			dialogueWriter.Write (text, typingDelay, actor.dialogueColor, speed, additive, skippable, () => isTyping = false);
 
 			if (fadeInDuration > 0f)
-			{
-				textCanvasGroup.alpha = 0f;
-				yield return textCanvasGroup.DOFade (1f, fadeInDuration).WaitForCompletion ();
-			}
+				yield return FadeDialogue (1f, fadeInDuration);
 			else
 				textCanvasGroup.alpha = 1f;
 
@@ -97,7 +94,7 @@ namespace Sycamore.Dialogue.UI
 			yield return endDelay;
 
 			if (fadeOutDuration > 0f)
-				yield return textCanvasGroup.DOFade (0f, fadeOutDuration).WaitForCompletion ();
+				yield return FadeDialogue (0f, fadeOutDuration);
 
 			info.Continue ();
 		}
@@ -116,6 +113,12 @@ namespace Sycamore.Dialogue.UI
 				yield return null;
 
 			ShowInputIndicator (false);
+		}
+
+		private YieldInstruction FadeDialogue (float target, float duration)
+		{
+			textCanvasGroup.alpha = 0f;
+			return textCanvasGroup.DOFade (target, duration).WaitForCompletion ();
 		}
 	}
 }
