@@ -9,6 +9,8 @@ namespace Sycamore.Dialogue.UI
 	[RequireComponent (typeof (CanvasGroup))]
 	public class TextWriter : MonoBehaviour
 	{
+		private const string CLEAR_HEX = "<alpha=#00>";
+
 		[SerializeField] private bool alwaysWriteInstant;
 		[SerializeField] private bool playTypingSound = false;
 		[SerializeField] private string[] ignoredText = new string[] { "Dialogue" };
@@ -66,8 +68,8 @@ namespace Sycamore.Dialogue.UI
 
 		private IEnumerator WriteRoutine (string s, TypingDelays typingDelay, bool additive = false, Action onComplete = null)
 		{
-			string tempText = additive ? (LastString + "\n") : string.Empty;
-			string finalText = tempText + s;
+			string startText = additive ? (LastString + "\n") : string.Empty;
+			string finalText = startText + s;
 			int textLength = s.Length;
 
 			// Have to store and check whether there's been input outside of the loop below
@@ -80,7 +82,8 @@ namespace Sycamore.Dialogue.UI
 			var commaDelayWait = new WaitForSeconds (typingDelay.commaDelay);
 			var finalDelayWait = new WaitForSeconds (typingDelay.finalDelay);
 
-			for (int i = 0; i < textLength; i++)
+			int startIndex = startText.Length == 0 ? 0 : startText.Length - 1;
+			for (int i = startIndex; i < textLength; i++)
 			{
 				if (anyKeyDown)
 					break;
@@ -89,18 +92,14 @@ namespace Sycamore.Dialogue.UI
 
 				if (c == '<')
 				{
-					tempText += c;
-					while (tempText.Last () != '>')
+					while (finalText[i] != '>')
 					{
 						i++;
 						c = s[i];
-						tempText += c;
 					}
 				}
 				else
 				{
-					tempText += c;
-
 					if (playTypingSound)
 						AudioController.Play ("Key Press");
 
@@ -112,7 +111,7 @@ namespace Sycamore.Dialogue.UI
 						yield return commaDelayWait;
 				}
 
-				text.text = tempText;
+				text.text = finalText.Insert (i, CLEAR_HEX);
 			}
 
 			text.text = finalText;
