@@ -82,7 +82,7 @@ namespace Sycamore.Dialogue.UI
 			var commaDelayWait = new WaitForSeconds (typingDelay.commaDelay);
 			var finalDelayWait = new WaitForSeconds (typingDelay.finalDelay);
 
-			int startIndex = startText.Length == 0 ? 0 : startText.Length - 1;
+			int startIndex = startText.Length;
 			for (int i = startIndex; i < textLength; i++)
 			{
 				if (anyKeyDown)
@@ -92,7 +92,7 @@ namespace Sycamore.Dialogue.UI
 
 				if (c == '<')
 				{
-					while (finalText[i] != '>')
+					while (finalText[i] != '>' && i < finalText.Length)
 					{
 						i++;
 						c = s[i];
@@ -111,7 +111,7 @@ namespace Sycamore.Dialogue.UI
 						yield return commaDelayWait;
 				}
 
-				// "Reveal" characters instead of adding them to prevent character movement from formatting and alignement rules.
+				// "Reveal" characters instead of adding them to prevent character movement from text formatting and alignment.
 				text.text = finalText.Insert (i, CLEAR_HEX);
 			}
 
@@ -121,7 +121,7 @@ namespace Sycamore.Dialogue.UI
 
 			if (onComplete != null) onComplete.Invoke ();
 
-			LastString = s;
+			LastString = finalText;
 		}
 
 		private IEnumerator CheckAnyKeyDown (Action onAnyKeyDown)
