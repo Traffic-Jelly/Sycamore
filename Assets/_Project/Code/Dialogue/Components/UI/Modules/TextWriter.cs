@@ -111,6 +111,7 @@ namespace Sycamore.Dialogue.UI
 						yield return commaDelayWait;
 				}
 
+				// "Reveal" characters instead of adding them to prevent character movement from formatting and alignement rules.
 				text.text = finalText.Insert (i, CLEAR_HEX);
 			}
 
