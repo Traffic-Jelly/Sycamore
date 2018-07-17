@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 using NodeCanvas.DialogueTrees;
+using DG.Tweening;
 
 namespace Sycamore.Dialogue.UI
 {
@@ -14,6 +15,7 @@ namespace Sycamore.Dialogue.UI
 		[SerializeField] private TextWriter dialogueWriter;
 		[SerializeField] private TextWriter nameWriter;
 		[SerializeField] private OptionPicker optionPicker;
+		[SerializeField] private CanvasGroup textCanvasGroup;
 
 		private Coroutine subtitleRequestRoutine;
 
@@ -56,8 +58,12 @@ namespace Sycamore.Dialogue.UI
 			var actor = info.actor;
 			var text = info.statement.text;
 			var audio = info.statement.audio;
+			var speed = info.statement.speed;
 			var endDelay = info.statement.endDelay;
+			var fadeInDuration = info.statement.fadeInDuration;
+			var fadeOutDuration = info.statement.fadeOutDuration;
 			var additive = info.statement.additive;
+			var skippable = info.statement.skippable;
 			var inputWaitMode = info.statement.inputWaitMode;
 
 			if (inputWaitMode == InputWaitMode.Beginning)
@@ -72,7 +78,15 @@ namespace Sycamore.Dialogue.UI
 			// Type dialogue
 			var isTyping = true;
 
-			dialogueWriter.Write (text, typingDelay, actor.dialogueColor, additive, () => isTyping = false);
+			dialogueWriter.Write (text, typingDelay, actor.dialogueColor, speed, additive, skippable, () => isTyping = false);
+
+			if (fadeInDuration > 0f)
+			{
+				textCanvasGroup.alpha = 0f;
+				yield return textCanvasGroup.DOFade (1f, fadeInDuration).WaitForCompletion ();
+			}
+			else
+				textCanvasGroup.alpha = 1f;
 
 			while (isTyping)
 				yield return null;
@@ -81,6 +95,9 @@ namespace Sycamore.Dialogue.UI
 				yield return WaitForInput ();
 
 			yield return endDelay;
+
+			if (fadeOutDuration > 0f)
+				yield return textCanvasGroup.DOFade (0f, fadeOutDuration).WaitForCompletion ();
 
 			info.Continue ();
 		}

@@ -12,8 +12,12 @@ namespace NodeCanvas.DialogueTrees
 		string text { get; }
 		AudioClip audio { get; }
 		bool additive { get; }
-		InputWaitMode inputWaitMode { get; }
+		bool skippable { get; }
+		float speed { get; }
 		float endDelay { get; }
+		float fadeInDuration { get; }
+		float fadeOutDuration { get; }
+		InputWaitMode inputWaitMode { get; }
 		string meta { get; }
 	}
 
@@ -29,9 +33,17 @@ namespace NodeCanvas.DialogueTrees
 		[SerializeField]
 		private bool _additive;
 		[SerializeField]
+		private bool _skippable = true;
+		[SerializeField]
 		private InputWaitMode _inputWaitMode = InputWaitMode.End;
 		[SerializeField]
+		private float _speed = 1f;
+		[SerializeField]
 		private float _endDelay;
+		[SerializeField]
+		private float _fadeInDuration;
+		[SerializeField]
+		private float _fadeOutDuration;
 		[SerializeField]
 		private string _meta = string.Empty;
 
@@ -53,16 +65,40 @@ namespace NodeCanvas.DialogueTrees
 			set { _additive = value; }
 		}
 
+		public bool skippable
+		{
+			get { return _skippable; }
+			set { _skippable = value; }
+		}
+
 		public InputWaitMode inputWaitMode
 		{
 			get { return _inputWaitMode; }
 			set { _inputWaitMode = value; }
 		}
 
+		public float speed
+		{
+			get { return _speed; }
+			set { _speed = value; }
+		}
+
 		public float endDelay
 		{
 			get { return _endDelay; }
 			set { _endDelay = value; }
+		}
+
+		public float fadeInDuration
+		{
+			get { return _fadeInDuration; }
+			set { _fadeInDuration = value; }
+		}
+
+		public float fadeOutDuration
+		{
+			get { return _fadeOutDuration; }
+			set { _fadeOutDuration = value; }
 		}
 
 		public string meta
@@ -84,13 +120,27 @@ namespace NodeCanvas.DialogueTrees
 			this.audio = audio;
 		}
 
-		public Statement (string text, AudioClip audio, bool additive, InputWaitMode inputWaitMode, float endDelay, string meta)
+		public Statement (
+			string text, 
+			AudioClip audio, 
+			bool additive, 
+			bool skippable, 
+			InputWaitMode inputWaitMode, 
+			float speed, 
+			float endDelay, 
+			float fadeInDuration, 
+			float fadeOutDuration, 
+			string meta)
 		{
 			this.text = text;
 			this.audio = audio;
 			this.additive = additive;
+			this.skippable = skippable;
 			this.inputWaitMode = inputWaitMode;
+			this.speed = speed;
 			this.endDelay = endDelay;
+			this.fadeInDuration = fadeInDuration;
+			this.fadeOutDuration = fadeOutDuration;
 			this.meta = meta;
 		}
 
@@ -134,7 +184,17 @@ namespace NodeCanvas.DialogueTrees
 				i++;
 			}
 
-			return new Statement (s, audio, additive, inputWaitMode, endDelay, meta);
+			return new Statement (
+				s,
+				audio, 
+				additive, 
+				skippable, 
+				inputWaitMode, 
+				speed, 
+				endDelay,
+				fadeInDuration,
+				fadeOutDuration,
+				meta);
 		}
 
 		public override string ToString ()

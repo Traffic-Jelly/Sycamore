@@ -31,7 +31,7 @@ namespace Sycamore.Dialogue.UI
 			Clear ();
 		}
 
-		public void Write (string s, TypingDelays typingDelay, Color color, bool additive = false, Action onComplete = null)
+		public void Write (string s, TypingDelays typingDelay, Color color, float speed = 1f, bool additive = false, bool skippable = true, Action onComplete = null)
 		{
 			if (text == null)
 				Debug.Log ("No text object assigned to TextWriter. Text cannot be written.");
@@ -53,7 +53,7 @@ namespace Sycamore.Dialogue.UI
 					onComplete.Invoke ();
 			}
 			else
-				writeRoutine = StartCoroutine (WriteRoutine (s, typingDelay, additive, onComplete));
+				writeRoutine = StartCoroutine (WriteRoutine (s, speed, typingDelay, additive, skippable, onComplete));
 		}
 
 		public void WriteInstant (string s)
@@ -66,7 +66,7 @@ namespace Sycamore.Dialogue.UI
 			text.text = string.Empty;
 		}
 
-		private IEnumerator WriteRoutine (string s, TypingDelays typingDelay, bool additive = false, Action onComplete = null)
+		private IEnumerator WriteRoutine (string s, float speed, TypingDelays typingDelay, bool additive = false, bool skippable = true, Action onComplete = null)
 		{
 			string startText = additive ? (LastString + "\n") : string.Empty;
 			string finalText = startText + s;
@@ -75,12 +75,13 @@ namespace Sycamore.Dialogue.UI
 			// Have to store and check whether there's been input outside of the loop below
 			// because it will be pausing alot for the different typing delays.
 			bool anyKeyDown = false;
-			var inputCheckRoutine = StartCoroutine (CheckAnyKeyDown (() => anyKeyDown = true));
+			if (skippable) StartCoroutine (CheckAnyKeyDown (() => anyKeyDown = true));
 
-			var characterDelayWait = new WaitForSeconds (typingDelay.characterDelay);
-			var sentenceDelayWait = new WaitForSeconds (typingDelay.sentenceDelay);
-			var commaDelayWait = new WaitForSeconds (typingDelay.commaDelay);
-			var finalDelayWait = new WaitForSeconds (typingDelay.finalDelay);
+			var waitMultiplier = 1f / speed;
+			var characterDelayWait = new WaitForSeconds (typingDelay.characterDelay * waitMultiplier);
+			var sentenceDelayWait = new WaitForSeconds (typingDelay.sentenceDelay * waitMultiplier);
+			var commaDelayWait = new WaitForSeconds (typingDelay.commaDelay * waitMultiplier);
+			var finalDelayWait = new WaitForSeconds (typingDelay.finalDelay * waitMultiplier);
 
 			int startIndex = startText.Length;
 			for (int i = startIndex; i < textLength; i++)
@@ -97,6 +98,7 @@ namespace Sycamore.Dialogue.UI
 						i++;
 						c = finalText[i];
 					}
+					i++;
 				}
 				else
 				{
