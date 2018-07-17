@@ -1,7 +1,7 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Linq;
-using UnityEngine;
 using TMPro;
 
 namespace Sycamore.Dialogue.UI
