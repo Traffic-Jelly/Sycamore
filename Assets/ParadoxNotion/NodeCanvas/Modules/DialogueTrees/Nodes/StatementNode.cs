@@ -44,7 +44,7 @@ namespace NodeCanvas.DialogueTrees{
 			statement.text = UnityEditor.EditorGUILayout.TextArea(statement.text, areaStyle, GUILayout.Height(100));
 			statement.audio = UnityEditor.EditorGUILayout.ObjectField("Audio File", statement.audio, typeof(AudioClip), false)  as AudioClip;
 			statement.additive = UnityEditor.EditorGUILayout.Toggle ("Additive", statement.additive);
-			statement.waitForInput = UnityEditor.EditorGUILayout.Toggle ("Wait For Input", statement.waitForInput);
+			statement.inputWaitMode = (InputWaitMode)UnityEditor.EditorGUILayout.EnumPopup ("Input Wait Mode", statement.inputWaitMode);
 			statement.endDelay = UnityEditor.EditorGUILayout.FloatField ("End Delay", statement.endDelay);
 			statement.meta = UnityEditor.EditorGUILayout.TextField("Metadata", statement.meta);
 		}

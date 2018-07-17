@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace NodeCanvas.DialogueTrees
 {
+	public enum InputWaitMode { None, Beginning, End }
 
 	///An interface to use for whats being said by a dialogue actor
 	public interface IStatement
@@ -11,7 +12,7 @@ namespace NodeCanvas.DialogueTrees
 		string text { get; }
 		AudioClip audio { get; }
 		bool additive { get; }
-		bool waitForInput { get; }
+		InputWaitMode inputWaitMode { get; }
 		float endDelay { get; }
 		string meta { get; }
 	}
@@ -28,7 +29,7 @@ namespace NodeCanvas.DialogueTrees
 		[SerializeField]
 		private bool _additive;
 		[SerializeField]
-		private bool _waitForInput = true;
+		private InputWaitMode _inputWaitMode = InputWaitMode.End;
 		[SerializeField]
 		private float _endDelay;
 		[SerializeField]
@@ -52,10 +53,10 @@ namespace NodeCanvas.DialogueTrees
 			set { _additive = value; }
 		}
 
-		public bool waitForInput
+		public InputWaitMode inputWaitMode
 		{
-			get { return _waitForInput; }
-			set { _waitForInput = value; }
+			get { return _inputWaitMode; }
+			set { _inputWaitMode = value; }
 		}
 
 		public float endDelay
@@ -83,10 +84,13 @@ namespace NodeCanvas.DialogueTrees
 			this.audio = audio;
 		}
 
-		public Statement (string text, AudioClip audio, string meta)
+		public Statement (string text, AudioClip audio, bool additive, InputWaitMode inputWaitMode, float endDelay, string meta)
 		{
 			this.text = text;
 			this.audio = audio;
+			this.additive = additive;
+			this.inputWaitMode = inputWaitMode;
+			this.endDelay = endDelay;
 			this.meta = meta;
 		}
 
@@ -130,7 +134,7 @@ namespace NodeCanvas.DialogueTrees
 				i++;
 			}
 
-			return new Statement (s, audio, meta);
+			return new Statement (s, audio, additive, inputWaitMode, endDelay, meta);
 		}
 
 		public override string ToString ()

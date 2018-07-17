@@ -31,7 +31,7 @@ namespace NodeCanvas.Tasks.Actions{
 			statement.text = UnityEditor.EditorGUILayout.TextArea(statement.text, (GUIStyle)"textField", GUILayout.Height(100));
 			statement.audio = (AudioClip)UnityEditor.EditorGUILayout.ObjectField("Audio Clip", statement.audio, typeof(AudioClip), false);
 			statement.additive = UnityEditor.EditorGUILayout.Toggle ("Additive", statement.additive);
-			statement.waitForInput = UnityEditor.EditorGUILayout.Toggle ("Wait For Input", statement.waitForInput);
+			statement.inputWaitMode = (InputWaitMode)UnityEditor.EditorGUILayout.EnumPopup ("Input Wait Mode", statement.inputWaitMode);
 			statement.endDelay = UnityEditor.EditorGUILayout.FloatField ("End Delay", statement.endDelay);
 			statement.meta = UnityEditor.EditorGUILayout.TextField("Meta", statement.meta);
 		}

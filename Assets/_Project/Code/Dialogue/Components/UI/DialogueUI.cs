@@ -54,15 +54,16 @@ namespace Sycamore.Dialogue.UI
 		private IEnumerator SubtitlesRequestRoutine (SubtitlesRequestInfo info)
 		{
 			var actor = info.actor;
-			string text = info.statement.text;
+			var text = info.statement.text;
 			var audio = info.statement.audio;
 			var endDelay = info.statement.endDelay;
-			bool additive = info.statement.meta.Contains ("additive");//info.statement.additive;
-			bool waitForInput = !info.statement.meta.Contains ("nowait");//info.statement.waitForInput;
+			var additive = info.statement.additive;
+			var inputWaitMode = info.statement.inputWaitMode;
 
-			Debug.Log ("End Delay:" + endDelay);
-			Debug.Log ("Additive:" + additive);
-			Debug.Log ("Wait For Input:" + waitForInput);
+			if (inputWaitMode == InputWaitMode.Beginning)
+				yield return WaitForInput ();
+
+			yield return null;
 
 			// Change name
 			if (nameWriter != null)
@@ -76,18 +77,10 @@ namespace Sycamore.Dialogue.UI
 			while (isTyping)
 				yield return null;
 
-			yield return null;
-
-			// Wait for input
-			ShowInputIndicator (true);
-
-			if (waitForInput)
-				while (!Input.anyKeyDown && !Input.GetMouseButtonDown (0))
-					yield return null;
+			if (inputWaitMode == InputWaitMode.End)
+				yield return WaitForInput ();
 
 			yield return endDelay;
-
-			ShowInputIndicator (false);
 
 			info.Continue ();
 		}
@@ -96,6 +89,16 @@ namespace Sycamore.Dialogue.UI
 		{
 			if (waitForInputIndicator != null)
 				waitForInputIndicator.SetActive (show);
+		}
+
+		private IEnumerator WaitForInput ()
+		{
+			ShowInputIndicator (true);
+
+			while (!Input.anyKeyDown && !Input.GetMouseButtonDown (0))
+				yield return null;
+
+			ShowInputIndicator (false);
 		}
 	}
 }
