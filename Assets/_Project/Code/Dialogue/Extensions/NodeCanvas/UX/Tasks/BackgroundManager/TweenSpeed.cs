@@ -6,7 +6,7 @@ using DG.Tweening;
 
 namespace Sycamore.Dialogue.Extensions
 {
-	[Category ("Sycamore/FX/UX")]
+	[Category ("Sycamore/FX/UX/Background")]
 	public class TweenSpeed : ActionTask
 	{
 		public BBParameter<float> to = new BBParameter<float> (1f);

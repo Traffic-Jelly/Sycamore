@@ -5,7 +5,7 @@ using DG.Tweening;
 
 namespace Sycamore.Dialogue.Extensions
 {
-	[Category ("Sycamore/FX/UX")]
+	[Category ("Sycamore/FX/UX/Background")]
 	public class TweenState : ActionTask
 	{
 		[RequiredField]

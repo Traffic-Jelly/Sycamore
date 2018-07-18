@@ -5,7 +5,7 @@ using ParadoxNotion.Design;
 
 namespace Sycamore.Dialogue.Extensions
 {
-	[Category ("Sycamore/FX/UX")]
+	[Category ("Sycamore/FX/UX/Background")]
 	public class TweenSpeedCustom : ActionTask
 	{
 		public BBParameter<float> to = new BBParameter<float> (1f);

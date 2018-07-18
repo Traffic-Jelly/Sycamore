@@ -7,6 +7,17 @@ namespace Sycamore.Dialogue.UI
 {
 	public class DialogueUI : MonoBehaviour
 	{
+		private static DialogueUI instance;
+		public static DialogueUI Instance
+		{
+			get
+			{
+				if (instance == null)
+					Debug.LogError ("DialogueUI instance doesn't exist.");
+				return instance;
+			}
+		}
+
 		[Header ("References (Optional)")]
 		[SerializeField] private GameObject waitForInputIndicator;
 		[Header ("References (Required)")]
@@ -21,6 +32,11 @@ namespace Sycamore.Dialogue.UI
 
 		private void Awake ()
 		{
+			if (instance == null)
+				instance = this;
+			else
+				Destroy (gameObject);
+
 			ShowInputIndicator (false);
 		}
 		private void OnEnable ()
@@ -81,7 +97,7 @@ namespace Sycamore.Dialogue.UI
 			dialogueWriter.Write (text, typingDelay, actor.dialogueColor, speed, additive, skippable, () => isTyping = false);
 
 			if (fadeInDuration > 0f)
-				yield return FadeDialogue (1f, fadeInDuration);
+				yield return Fade (1f, fadeInDuration).WaitForCompletion ();
 			else
 				textCanvasGroup.alpha = 1f;
 
@@ -94,7 +110,7 @@ namespace Sycamore.Dialogue.UI
 			yield return endDelay;
 
 			if (fadeOutDuration > 0f)
-				yield return FadeDialogue (0f, fadeOutDuration);
+				yield return Fade (0f, fadeOutDuration).WaitForCompletion ();
 
 			info.Continue ();
 		}
@@ -115,10 +131,9 @@ namespace Sycamore.Dialogue.UI
 			ShowInputIndicator (false);
 		}
 
-		private YieldInstruction FadeDialogue (float target, float duration)
+		public Tweener Fade (float target, float duration)
 		{
-			textCanvasGroup.alpha = 0f;
-			return textCanvasGroup.DOFade (target, duration).WaitForCompletion ();
+			return textCanvasGroup.DOFade (target, duration);
 		}
 	}
 }
