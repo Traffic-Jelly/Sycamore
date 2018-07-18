@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95dc7765223c13740bb7c9b3a35f1e45, type: 3}
-  m_Name: Romance
+  m_Name: Romance 1
   m_EditorClassIdentifier: 
-  colorA: {r: 0.8509804, g: 0, b: 0.16816458, a: 1}
-  colorB: {r: 1, g: 1, b: 1, a: 1}
+  colorA: {r: 0.3113775, g: 0.07111071, b: 0.3207547, a: 1}
+  colorB: {r: 0.5793605, g: 0.19517621, b: 0.8113208, a: 1}
   scale: 0.2
-  octaves: 2
-  speed: 1.6
-  bias: -0.62
+  octaves: 2.136
+  speed: 0.19
+  bias: 0.64

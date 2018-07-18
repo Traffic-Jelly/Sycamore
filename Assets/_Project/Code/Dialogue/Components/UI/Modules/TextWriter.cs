@@ -89,6 +89,9 @@ namespace Sycamore.Dialogue.UI
 				if (anyKeyDown)
 					break;
 
+				// "Reveal" characters instead of adding them to prevent character movement from text formatting and alignment.
+				text.text = finalText.Insert (i, CLEAR_HEX);
+
 				char c = finalText[i];
 
 				if (c == '<')
@@ -112,13 +115,10 @@ namespace Sycamore.Dialogue.UI
 					else if (c == ',')
 						yield return commaDelayWait;
 				}
-
-				// "Reveal" characters instead of adding them to prevent character movement from text formatting and alignment.
-				text.text = finalText.Insert (i, CLEAR_HEX);
 			}
 
 			text.text = finalText;
-
+			
 			yield return finalDelayWait;
 
 			if (onComplete != null) onComplete.Invoke ();

@@ -582,11 +582,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue
-    Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue
-    Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue
-    Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue Dialogue
-    Dialogue '
+  m_text: Dialogue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad1df38e9eeb98e4788383784639853f, type: 2}
   m_sharedMaterial: {fileID: 21843608512600882, guid: ad1df38e9eeb98e4788383784639853f,
@@ -614,7 +610,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 35.4
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -655,12 +651,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 114791116698818036}
-    characterCount: 324
+    characterCount: 8
     spriteCount: 0
-    spaceCount: 36
-    wordCount: 36
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
-    lineCount: 6
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -1060,8 +1056,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 334.91022, y: -50}
-  m_SizeDelta: {x: 669.82043, y: 100}
+  m_AnchoredPosition: {x: 334.88995, y: -50}
+  m_SizeDelta: {x: 669.7799, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224263055952584470
 RectTransform:
@@ -1079,8 +1075,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0.525}
   m_AnchorMax: {x: 0.7, y: 0.8}
-  m_AnchoredPosition: {x: 0.49987793, y: -0.000030517578}
-  m_SizeDelta: {x: 167.61, y: 0}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 0}
+  m_SizeDelta: {x: 170, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224501787610519180
 RectTransform:

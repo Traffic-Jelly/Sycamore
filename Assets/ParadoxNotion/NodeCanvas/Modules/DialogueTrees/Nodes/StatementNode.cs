@@ -47,9 +47,9 @@ namespace NodeCanvas.DialogueTrees{
 			statement.skippable= UnityEditor.EditorGUILayout.Toggle ("Skippable", statement.skippable);
 			statement.inputWaitMode = (InputWaitMode)UnityEditor.EditorGUILayout.EnumPopup ("Input Wait Mode", statement.inputWaitMode);
 			statement.speed = UnityEditor.EditorGUILayout.FloatField ("Speed", statement.speed);
-			statement.endDelay = UnityEditor.EditorGUILayout.FloatField ("End Delay", statement.endDelay);
 			statement.fadeInDuration = UnityEditor.EditorGUILayout.FloatField ("Fade In Duration", statement.fadeInDuration);
 			statement.fadeOutDuration = UnityEditor.EditorGUILayout.FloatField ("Fade Out Duration", statement.fadeOutDuration);
+			statement.endDelay = UnityEditor.EditorGUILayout.FloatField ("End Delay", statement.endDelay);
 			statement.meta = UnityEditor.EditorGUILayout.TextField("Metadata", statement.meta);
 		}
 

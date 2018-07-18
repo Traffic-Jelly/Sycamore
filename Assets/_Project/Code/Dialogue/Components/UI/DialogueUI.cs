@@ -96,21 +96,29 @@ namespace Sycamore.Dialogue.UI
 
 			dialogueWriter.Write (text, typingDelay, actor.dialogueColor, speed, additive, skippable, () => isTyping = false);
 
+			Tweener fadeIn = null;
 			if (fadeInDuration > 0f)
-				yield return Fade (1f, fadeInDuration).WaitForCompletion ();
+			{
+				textCanvasGroup.alpha = 0f;
+				fadeIn = Fade (1f, fadeInDuration);
+			}
 			else
 				textCanvasGroup.alpha = 1f;
 
 			while (isTyping)
 				yield return null;
-
+				
 			if (inputWaitMode == InputWaitMode.End)
 				yield return WaitForInput ();
 
 			yield return endDelay;
 
 			if (fadeOutDuration > 0f)
+			{
+				if (fadeIn != null)
+					fadeIn.Kill ();
 				yield return Fade (0f, fadeOutDuration).WaitForCompletion ();
+			}
 
 			info.Continue ();
 		}
