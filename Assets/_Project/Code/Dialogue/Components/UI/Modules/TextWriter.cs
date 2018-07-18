@@ -13,7 +13,7 @@ namespace Sycamore.Dialogue.UI
 
 		[SerializeField] private bool alwaysWriteInstant;
 		[SerializeField] private bool playTypingSound = false;
-		[SerializeField] private string[] ignoredText = new string[] { "Dialogue" };
+		[SerializeField] private string[] ignoredText = new string[] { };
 		[SerializeField] private TextMeshProUGUI text;
 
 		private Coroutine writeRoutine;
