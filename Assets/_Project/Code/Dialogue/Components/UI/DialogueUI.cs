@@ -111,7 +111,7 @@ namespace Sycamore.Dialogue.UI
 			if (inputWaitMode == InputWaitMode.End)
 				yield return WaitForInput ();
 
-			yield return endDelay;
+			yield return new WaitForSeconds (endDelay);
 
 			if (fadeOutDuration > 0f)
 			{
