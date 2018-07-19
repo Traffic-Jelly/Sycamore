@@ -234,27 +234,6 @@ MonoBehaviour:
         FadeOut: 0
         RandomStartPosition: 0
         individualSettings: []
-    - Name: Dialogue
-      Loop: 0
-      loopSequenceCount: 0
-      loopSequenceOverlap: 0
-      loopSequenceRandomDelay: 0
-      loopSequenceRandomPitch: 0
-      loopSequenceRandomVolume: 0
-      DestroyOnLoad: 1
-      Volume: 1
-      SubItemPickMode: 2
-      MinTimeBetweenPlayCalls: 0.1
-      MaxInstanceCount: 0
-      Delay: 0
-      RandomVolume: 0
-      RandomPitch: 0
-      RandomDelay: 0
-      overrideAudioSourceSettings: 0
-      audioSource_MinDistance: 1
-      audioSource_MaxDistance: 500
-      spatialBlend: 0
-      subItems: []
     _volume: 1
     audioMixerGroup: {fileID: 0}
   - Name: Ambience
@@ -378,6 +357,27 @@ MonoBehaviour:
         FadeOut: 0.5
         RandomStartPosition: 0
         individualSettings: []
+    - Name: Dialogue
+      Loop: 0
+      loopSequenceCount: 0
+      loopSequenceOverlap: 0
+      loopSequenceRandomDelay: 0
+      loopSequenceRandomPitch: 0
+      loopSequenceRandomVolume: 0
+      DestroyOnLoad: 1
+      Volume: 1
+      SubItemPickMode: 2
+      MinTimeBetweenPlayCalls: 0.1
+      MaxInstanceCount: 0
+      Delay: 0
+      RandomVolume: 0
+      RandomPitch: 0
+      RandomDelay: 0
+      overrideAudioSourceSettings: 0
+      audioSource_MinDistance: 1
+      audioSource_MaxDistance: 500
+      spatialBlend: 0
+      subItems: []
     _volume: 0.7
     audioMixerGroup: {fileID: 0}
   - Name: SFX
@@ -423,12 +423,96 @@ MonoBehaviour:
         FadeOut: 0
         RandomStartPosition: 0
         individualSettings: []
+    - Name: Forest Footsteps
+      Loop: 1
+      loopSequenceCount: 0
+      loopSequenceOverlap: 0
+      loopSequenceRandomDelay: 0
+      loopSequenceRandomPitch: 0
+      loopSequenceRandomVolume: 0
+      DestroyOnLoad: 1
+      Volume: 1
+      SubItemPickMode: 2
+      MinTimeBetweenPlayCalls: 0.1
+      MaxInstanceCount: 0
+      Delay: 0
+      RandomVolume: 0
+      RandomPitch: 0
+      RandomDelay: 0
+      overrideAudioSourceSettings: 0
+      audioSource_MinDistance: 1
+      audioSource_MaxDistance: 500
+      spatialBlend: 0
+      subItems:
+      - SubItemType: 0
+        Probability: 1
+        DisableOtherSubitems: 0
+        ItemModeAudioID: 
+        Clip: {fileID: 8300000, guid: c61f6c16419532c449d80d3800c63868, type: 3}
+        Volume: 1
+        PitchShift: 0
+        Pan2D: 0
+        Delay: 0
+        RandomPitch: 0
+        RandomVolume: 0
+        RandomDelay: 0
+        ClipStopTime: 0
+        ClipStartTime: 0
+        FadeIn: 0
+        FadeOut: 0
+        RandomStartPosition: 0
+        individualSettings: []
     _volume: 1
     audioMixerGroup: {fileID: 0}
   - Name: Dialogue
     _parentCategoryName: 
     AudioObjectPrefab: {fileID: 0}
     AudioItems: []
+    _volume: 1
+    audioMixerGroup: {fileID: 0}
+  - Name: Music
+    _parentCategoryName: 
+    AudioObjectPrefab: {fileID: 0}
+    AudioItems:
+    - Name: Second Grade
+      Loop: 0
+      loopSequenceCount: 0
+      loopSequenceOverlap: 0
+      loopSequenceRandomDelay: 0
+      loopSequenceRandomPitch: 0
+      loopSequenceRandomVolume: 0
+      DestroyOnLoad: 1
+      Volume: 1
+      SubItemPickMode: 2
+      MinTimeBetweenPlayCalls: 0.1
+      MaxInstanceCount: 0
+      Delay: 0
+      RandomVolume: 0
+      RandomPitch: 0
+      RandomDelay: 0
+      overrideAudioSourceSettings: 0
+      audioSource_MinDistance: 1
+      audioSource_MaxDistance: 500
+      spatialBlend: 0
+      subItems:
+      - SubItemType: 0
+        Probability: 1
+        DisableOtherSubitems: 0
+        ItemModeAudioID: 
+        Clip: {fileID: 8300000, guid: 7eaa1808e896e774c86b905b3fb99487, type: 3}
+        Volume: 1
+        PitchShift: 0
+        Pan2D: 0
+        Delay: 0
+        RandomPitch: 0
+        RandomVolume: 0
+        RandomDelay: 0
+        ClipStopTime: 0
+        ClipStartTime: 0
+        FadeIn: 0
+        FadeOut: 0
+        RandomStartPosition: 0
+        individualSettings: []
     _volume: 1
     audioMixerGroup: {fileID: 0}
   musicPlaylists:
@@ -443,8 +527,8 @@ MonoBehaviour:
   _audioDisabled: 0
   _volume: 1
   _currentInspectorSelection:
-    currentCategoryIndex: 0
-    currentItemIndex: 1
+    currentCategoryIndex: 1
+    currentItemIndex: 0
     currentSubitemIndex: 0
     currentPlaylistEntryIndex: 0
     currentPlaylistIndex: 0
@@ -996,21 +1080,41 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114635331704083222, guid: 27958d50a1c8f0a419af6fea6aee0861,
-        type: 2}
-      propertyPath: dialogueTreeController
-      value: 
-      objectReference: {fileID: 1773218044}
-    - target: {fileID: 114826207486222196, guid: 27958d50a1c8f0a419af6fea6aee0861,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 960869983}
     - target: {fileID: 223008236827329982, guid: 27958d50a1c8f0a419af6fea6aee0861,
         type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1236758109}
+    - target: {fileID: 114826207486222196, guid: 27958d50a1c8f0a419af6fea6aee0861,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 960869983}
+    - target: {fileID: 114635331704083222, guid: 27958d50a1c8f0a419af6fea6aee0861,
+        type: 2}
+      propertyPath: dialogueTreeController
+      value: 
+      objectReference: {fileID: 1773218044}
+    - target: {fileID: 114881794597198924, guid: 27958d50a1c8f0a419af6fea6aee0861,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114881794597198924, guid: 27958d50a1c8f0a419af6fea6aee0861,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114416485019304772, guid: 27958d50a1c8f0a419af6fea6aee0861,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114416485019304772, guid: 27958d50a1c8f0a419af6fea6aee0861,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114791116698818036, guid: 27958d50a1c8f0a419af6fea6aee0861,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -1021,40 +1125,25 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224263055952584470, guid: 27958d50a1c8f0a419af6fea6aee0861,
+    - target: {fileID: 114640676311282584, guid: 27958d50a1c8f0a419af6fea6aee0861,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114640676311282584, guid: 27958d50a1c8f0a419af6fea6aee0861,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224082969995614230, guid: 27958d50a1c8f0a419af6fea6aee0861,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 335.03458
       objectReference: {fileID: 0}
-    - target: {fileID: 114881794597198924, guid: 27958d50a1c8f0a419af6fea6aee0861,
+    - target: {fileID: 224082969995614230, guid: 27958d50a1c8f0a419af6fea6aee0861,
         type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114881794597198924, guid: 27958d50a1c8f0a419af6fea6aee0861,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114640676311282584, guid: 27958d50a1c8f0a419af6fea6aee0861,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114640676311282584, guid: 27958d50a1c8f0a419af6fea6aee0861,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114416485019304772, guid: 27958d50a1c8f0a419af6fea6aee0861,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114416485019304772, guid: 27958d50a1c8f0a419af6fea6aee0861,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
+      propertyPath: m_SizeDelta.x
+      value: 670.06915
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27958d50a1c8f0a419af6fea6aee0861, type: 2}

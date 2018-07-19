@@ -169,7 +169,7 @@ namespace NodeCanvas.DialogueTrees{
 			}
 
 			//Otherwise use the default actor and set the name to the key and null transform
-			Debug.Log(string.Format("<b>DialogueTree:</b> An actor entry '{0}' on DialogueTree has no reference. A dummy Actor will be used with the entry Key for name", paramName), this);
+			//Debug.Log(string.Format("<b>DialogueTree:</b> An actor entry '{0}' on DialogueTree has no reference. A dummy Actor will be used with the entry Key for name", paramName), this);
 			return new ProxyDialogueActor(paramName, null);
 		}
 
@@ -249,7 +249,7 @@ namespace NodeCanvas.DialogueTrees{
 			}
 
 			if ( !(agent is IDialogueActor) ){
-				Debug.Log("<b>DialogueTree:</b> INSTIGATOR agent used in DialogueTree does not implement IDialogueActor. A dummy actor will be used.");
+				//Debug.Log("<b>DialogueTree:</b> INSTIGATOR agent used in DialogueTree does not implement IDialogueActor. A dummy actor will be used.");
 			}
 
 			currentNode = currentNode != null? currentNode : (DTNode)primeNode;
