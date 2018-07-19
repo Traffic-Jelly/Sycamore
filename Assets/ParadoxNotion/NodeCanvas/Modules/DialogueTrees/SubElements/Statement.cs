@@ -184,17 +184,9 @@ namespace NodeCanvas.DialogueTrees
 				i++;
 			}
 
-			return new Statement (
-				s,
-				audio, 
-				additive, 
-				skippable, 
-				inputWaitMode, 
-				speed, 
-				endDelay,
-				fadeInDuration,
-				fadeOutDuration,
-				meta);
+			var copy = ParadoxNotion.Serialization.JSONSerializer.Clone<Statement> (this);
+			copy.text = s;
+			return copy;
 		}
 
 		public override string ToString ()
