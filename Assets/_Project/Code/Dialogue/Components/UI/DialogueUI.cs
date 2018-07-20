@@ -62,10 +62,11 @@ namespace Sycamore.Dialogue.UI
 			if (info.showLastStatement)
 				dialogueWriter.WriteInstant (dialogueWriter.LastString);
 
-			optionPicker.CreateOptions (info.options, (optionIndex) => 
+			optionPicker.CreateOptions (info.options, (optionIndex, optionButton) => 
 			{
 				info.SelectOption (optionIndex);
-				optionPicker.HideOptions ();
+				optionButton.Select ();
+				optionPicker.HideOptions (optionButton);
 			});
 		}
 

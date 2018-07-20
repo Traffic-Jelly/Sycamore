@@ -20,7 +20,7 @@ namespace Sycamore.Dialogue.UI
 				buttonTemplate.gameObject.SetActive (false);
 		}
 
-		public void CreateOptions (Dictionary<IStatement, int> options, Action<int> onOptionPicked)
+		public void CreateOptions (Dictionary<IStatement, int> options, Action<int, OptionButton> onOptionPicked)
 		{
 			if (buttonPool == null)
 				buttonPool = new List<OptionButton> ();
@@ -31,31 +31,36 @@ namespace Sycamore.Dialogue.UI
 			int i = 0;
 			foreach (var option in options)
 			{
-				if (buttonPool[i] == null)
+				var button = buttonPool[i];
+				if (button == null)
 				{
-					buttonPool[i] = Instantiate (buttonTemplate, buttonTemplate.transform.parent);
-					buttonPool[i].gameObject.SetActive (true);
-					buttonPool[i].SetAlpha (0f);
+					button = Instantiate (buttonTemplate, buttonTemplate.transform.parent);
+					button.gameObject.SetActive (true);
+					button.SetAlpha (0f);
+					buttonPool[i] = button;
 				}
 
 				if (i < options.Count)
 				{
-					buttonPool[i].Show (i * staggerDuration);
-					buttonPool[i].Text.text = option.Key.text;
-					buttonPool[i].Button.onClick.RemoveAllListeners ();
-					buttonPool[i].Button.onClick.AddListener (() => onOptionPicked.Invoke (option.Value));
+					button.Show (i * staggerDuration);
+					button.Text.text = option.Key.text;
+					button.Button.onClick.RemoveAllListeners ();
+					button.Button.onClick.AddListener (() =>
+					{
+						onOptionPicked.Invoke (option.Value, button);
+					});
 				}
 				else
-					buttonPool[i].Hide (i * staggerDuration);
+					button.Hide (i * staggerDuration);
 
 				i++;
 			}
 		}
 
-		public void HideOptions ()
+		public void HideOptions (OptionButton ignore)
 		{
 			for (int i = 0; i < buttonPool.Count; i++)
-				if (buttonPool[i] != null)
+				if (buttonPool[i] != null && buttonPool[i] != ignore)
 					buttonPool[i].Hide (i * staggerDuration);
 		}
 	}
