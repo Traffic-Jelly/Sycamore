@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
+using TMPro;
 using System;
 using System.Collections;
 using System.Linq;
-using TMPro;
 
 namespace Sycamore.Dialogue.UI
 {
@@ -31,7 +31,7 @@ namespace Sycamore.Dialogue.UI
 			Clear ();
 		}
 
-		public void Write (string s, TypingDelays typingDelay, Color color, float speed = 1f, bool additive = false, bool skippable = true, Action onComplete = null)
+		public void Write (string s, TypingDelays typingDelay, Color color, float speed = 1f, bool additive = false, bool skippable = true, TextAlignmentOptions alignment = TextAlignmentOptions.Top, Action onComplete = null)
 		{
 			if (text == null)
 				Debug.Log ("No text object assigned to TextWriter. Text cannot be written.");
@@ -45,6 +45,7 @@ namespace Sycamore.Dialogue.UI
 			}
 
 			text.color = color;
+			text.alignment = alignment;
 
 			if (alwaysWriteInstant)
 			{

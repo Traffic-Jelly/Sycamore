@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3f478ef69fbe04fa9ed3664a8a443e, type: 3}
   m_Name: Playground
   m_EditorClassIdentifier: 
-  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.DialogueTrees.DialogueTree","translation":{"x":-4247.0,"y":-5122.0},"zoomFactor":0.8675022,"nodes":[{"statement":{"_text":"<align=\"center\">//Second
-    Grade</align>","_skippable":false,"_inputWaitMode":"None","_speed":0.25,"_endDelay":3.0,"_fadeInDuration":2.0,"_fadeOutDuration":2.0},"_actorName":"Narrator","_actorParameterID":"9eb7af6b-9969-4f86-905c-1102e43b6232","_position":{"x":5499.0,"y":5481.0},"$type":"NodeCanvas.DialogueTrees.StatementNode","$id":"2"},{"statement":{"_text":"Dude,
+  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.DialogueTrees.DialogueTree","translation":{"x":-4341.0,"y":-4690.0},"zoomFactor":0.8675022,"nodes":[{"statement":{"_text":"//Second
+    Grade","_skippable":false,"_inputWaitMode":"None","_textAlignment":"Bottom","_speed":0.25,"_endDelay":3.0,"_fadeInDuration":2.0,"_fadeOutDuration":2.0},"_actorName":"Narrator","_actorParameterID":"9eb7af6b-9969-4f86-905c-1102e43b6232","_position":{"x":5552.0,"y":5483.0},"$type":"NodeCanvas.DialogueTrees.StatementNode","$id":"2"},{"statement":{"_text":"Dude,
     did you hear about that soccer ball destroying Matthew''s face today?","_fadeInDuration":1.5},"_actorName":"Andy","_actorParameterID":"6ebeca0e-df4c-45c3-bbe7-91a03f57cc36","_position":{"x":5503.0,"y":5561.0},"$type":"NodeCanvas.DialogueTrees.StatementNode","$id":"4"},{"availableChoices":[{"statement":{"_text":"Yea,
     didn''t it break his glasses?"}},{"statement":{"_text":"I heard he died, but I
     think that was an exaggeration."}},{"statement":{"_text":"Someone said he was

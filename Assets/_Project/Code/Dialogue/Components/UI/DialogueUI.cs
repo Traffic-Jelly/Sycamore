@@ -80,6 +80,7 @@ namespace Sycamore.Dialogue.UI
 			var fadeOutDuration = info.statement.fadeOutDuration;
 			var additive = info.statement.additive;
 			var skippable = info.statement.skippable;
+			var alignment = info.statement.textAlignment;
 			var inputWaitMode = info.statement.inputWaitMode;
 
 			if (inputWaitMode == InputWaitMode.Beginning)
@@ -94,7 +95,7 @@ namespace Sycamore.Dialogue.UI
 			// Type dialogue
 			var isTyping = true;
 
-			dialogueWriter.Write (text, typingDelay, actor.dialogueColor, speed, additive, skippable, () => isTyping = false);
+			dialogueWriter.Write (text, typingDelay, actor.dialogueColor, speed, additive, skippable, alignment, () => isTyping = false);
 
 			Tweener fadeIn = null;
 			if (fadeInDuration > 0f)

@@ -1,11 +1,10 @@
-using NodeCanvas.Framework;
 using UnityEngine;
+using NodeCanvas.Framework;
+using TMPro;
 using System.Linq;
 
 namespace NodeCanvas.DialogueTrees
 {
-	public enum InputWaitMode { None, Beginning, End }
-
 	///An interface to use for whats being said by a dialogue actor
 	public interface IStatement
 	{
@@ -18,6 +17,7 @@ namespace NodeCanvas.DialogueTrees
 		float fadeInDuration { get; }
 		float fadeOutDuration { get; }
 		InputWaitMode inputWaitMode { get; }
+		TextAlignmentOptions textAlignment { get; }
 		string meta { get; }
 	}
 
@@ -25,7 +25,6 @@ namespace NodeCanvas.DialogueTrees
 	[System.Serializable]
 	public class Statement : IStatement
 	{
-
 		[SerializeField]
 		private string _text = string.Empty;
 		[SerializeField]
@@ -36,6 +35,8 @@ namespace NodeCanvas.DialogueTrees
 		private bool _skippable = true;
 		[SerializeField]
 		private InputWaitMode _inputWaitMode = InputWaitMode.End;
+		[SerializeField]
+		private TextAlignmentOptions _textAlignment = TextAlignmentOptions.Top;
 		[SerializeField]
 		private float _speed = 1f;
 		[SerializeField]
@@ -75,6 +76,12 @@ namespace NodeCanvas.DialogueTrees
 		{
 			get { return _inputWaitMode; }
 			set { _inputWaitMode = value; }
+		}
+
+		public TextAlignmentOptions textAlignment
+		{
+			get { return _textAlignment; }
+			set { _textAlignment = value; }
 		}
 
 		public float speed
@@ -194,4 +201,6 @@ namespace NodeCanvas.DialogueTrees
 			return text;
 		}
 	}
+
+	public enum InputWaitMode { None, Beginning, End }
 }
