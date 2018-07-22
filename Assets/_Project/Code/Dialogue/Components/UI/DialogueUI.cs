@@ -76,7 +76,8 @@ namespace Sycamore.Dialogue.UI
 			var text = info.statement.text;
 			var audio = info.statement.audio;
 			var speed = info.statement.speed;
-			var endDelay = info.statement.endDelay;
+			var holdDuration = info.statement.holdDuration;
+			var endWaitDuration = info.statement.endWaitDuration;
 			var fadeInDuration = info.statement.fadeInDuration;
 			var fadeOutDuration = info.statement.fadeOutDuration;
 			var additive = info.statement.additive;
@@ -113,7 +114,7 @@ namespace Sycamore.Dialogue.UI
 			if (inputWaitMode == InputWaitMode.End)
 				yield return WaitForInput ();
 
-			yield return new WaitForSeconds (endDelay);
+			yield return new WaitForSeconds (holdDuration);
 
 			if (fadeOutDuration > 0f)
 			{
@@ -121,6 +122,8 @@ namespace Sycamore.Dialogue.UI
 					fadeIn.Kill ();
 				yield return Fade (0f, fadeOutDuration).WaitForCompletion ();
 			}
+
+			yield return new WaitForSeconds (endWaitDuration);
 
 			info.Continue ();
 		}

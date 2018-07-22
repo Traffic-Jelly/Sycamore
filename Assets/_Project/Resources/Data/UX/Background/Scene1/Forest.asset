@@ -17,3 +17,4 @@ MonoBehaviour:
   octaves: 2
   speed: 0.1
   bias: 1
+  contrast: 1

@@ -13,7 +13,8 @@ namespace NodeCanvas.DialogueTrees
 		bool additive { get; }
 		bool skippable { get; }
 		float speed { get; }
-		float endDelay { get; }
+		float holdDuration { get; }
+		float endWaitDuration { get; }
 		float fadeInDuration { get; }
 		float fadeOutDuration { get; }
 		InputWaitMode inputWaitMode { get; }
@@ -40,7 +41,9 @@ namespace NodeCanvas.DialogueTrees
 		[SerializeField]
 		private float _speed = 1f;
 		[SerializeField]
-		private float _endDelay;
+		private float _holdDuration;
+		[SerializeField]
+		private float _endDuration;
 		[SerializeField]
 		private float _fadeInDuration;
 		[SerializeField]
@@ -90,10 +93,16 @@ namespace NodeCanvas.DialogueTrees
 			set { _speed = value; }
 		}
 
-		public float endDelay
+		public float holdDuration
 		{
-			get { return _endDelay; }
-			set { _endDelay = value; }
+			get { return _holdDuration; }
+			set { _holdDuration = value; }
+		}
+
+		public float endWaitDuration
+		{
+			get { return _holdDuration; }
+			set { _holdDuration = value; }
 		}
 
 		public float fadeInDuration
@@ -145,7 +154,7 @@ namespace NodeCanvas.DialogueTrees
 			this.skippable = skippable;
 			this.inputWaitMode = inputWaitMode;
 			this.speed = speed;
-			this.endDelay = endDelay;
+			this.holdDuration = endDelay;
 			this.fadeInDuration = fadeInDuration;
 			this.fadeOutDuration = fadeOutDuration;
 			this.meta = meta;
