@@ -92,7 +92,6 @@ namespace Sycamore.Dialogue.UI
 			s.Append (outline.DOColor (noOutlineColor, outlineDuration).SetEase (outlineCurve));
 			s.Play ();
 
-			yield return s.WaitForCompletion ();
 			yield return HideRoutine (0f, true);
 		}
 
