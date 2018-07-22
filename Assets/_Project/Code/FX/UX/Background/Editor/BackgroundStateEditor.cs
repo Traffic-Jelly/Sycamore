@@ -25,6 +25,7 @@ namespace Sycamore.FX.UX
 			managerInstance.SetOctaves (state.octaves);
 			managerInstance.SetSpeed (state.speed);
 			managerInstance.SetBias (state.bias);
+			managerInstance.SetContrast (state.contrast);
 		}
 	}
 }

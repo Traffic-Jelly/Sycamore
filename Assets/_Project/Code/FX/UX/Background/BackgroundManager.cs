@@ -5,13 +5,15 @@ using DG.Tweening;
 namespace Sycamore.FX.UX
 {
 	[RequireComponent (typeof (Image))]
+	[ExecuteInEditMode]
 	public class BackgroundManager : MonoSingleton<BackgroundManager>
 	{
 		private readonly string COLOR_A = "_ColorA";
 		private readonly string COLOR_B = "_ColorB";
 		private readonly string SCALE = "_Scale";
 		private readonly string OCTAVES = "_Octaves";
-		private readonly string BIAS = "_Contrast";
+		private readonly string BIAS = "_Bias";
+		private readonly string CONTRAST = "_Contrast";
 		private readonly string OFFSET = "_Offset";
 
 		[HideInInspector] [SerializeField] private float speed = 0.2f;
@@ -38,6 +40,10 @@ namespace Sycamore.FX.UX
 			}
 		}
 
+		private void Start ()
+		{
+			SetOffset (0f);
+		}
 		private void Update ()
 		{
 			SetOffset (GetOffset () + speed * Time.deltaTime);
@@ -51,6 +57,7 @@ namespace Sycamore.FX.UX
 		{
 			return Material.GetColor (COLOR_A);
 		}
+
 		public void SetColorB (Color color)
 		{
 			Material.SetColor (COLOR_B, color);
@@ -59,6 +66,7 @@ namespace Sycamore.FX.UX
 		{
 			return Material.GetColor (COLOR_B);
 		}
+
 		public void SetScale (float scale)
 		{
 			Material.SetFloat (SCALE, scale);
@@ -67,6 +75,7 @@ namespace Sycamore.FX.UX
 		{
 			return Material.GetFloat (SCALE);
 		}
+
 		public void SetOctaves (float octaves)
 		{
 			Material.SetFloat (OCTAVES, Mathf.Clamp (octaves, 1f, 3f));
@@ -75,6 +84,7 @@ namespace Sycamore.FX.UX
 		{
 			return Material.GetFloat (OCTAVES);
 		}
+
 		public void SetBias (float bias)
 		{
 			Material.SetFloat (BIAS, bias);
@@ -83,6 +93,16 @@ namespace Sycamore.FX.UX
 		{
 			return Material.GetFloat (BIAS);
 		}
+
+		public void SetContrast (float contrast)
+		{
+			Material.SetFloat (CONTRAST, contrast);
+		}
+		public float GetContrast ()
+		{
+			return Material.GetFloat (CONTRAST);
+		}
+
 		public void SetSpeed (float speed)
 		{
 			this.speed = speed;
@@ -91,6 +111,7 @@ namespace Sycamore.FX.UX
 		{
 			return speed;
 		}
+
 		private void SetOffset (float offset)
 		{
 			Material.SetFloat (OFFSET, offset);
@@ -176,6 +197,18 @@ namespace Sycamore.FX.UX
 		public void TweenBias (float to, float duration, Ease ease)
 		{
 			var t = DOTween.To (() => GetBias (), (o) => SetBias (o), to, duration);
+			t.SetEase (ease);
+		}
+
+		public void TweenContrast (float to, float duration, AnimationCurve curve = null)
+		{
+			var t = DOTween.To (() => GetContrast (), (o) => SetContrast (o), to, duration);
+			if (curve != null)
+				t.SetEase (curve);
+		}
+		public void TweenContrast (float to, float duration, Ease ease)
+		{
+			var t = DOTween.To (() => GetContrast (), (o) => SetContrast (o), to, duration);
 			t.SetEase (ease);
 		}
 
