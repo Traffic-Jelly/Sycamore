@@ -201,7 +201,7 @@ Shader "Sycamore/FX/Background Noise"
 }
 /*ASEBEGIN
 Version=15301
-234;92;1253;767;-440.5039;546.2323;1.525934;True;False
+383;92;1065;735;-330.637;465.3575;1.525934;True;False
 Node;AmplifyShaderEditor.PosVertexDataNode;46;-1200,-224;Float;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;5;-1200,176;Float;False;Property;_Scale;Scale;2;0;Create;True;0;0;False;0;1;0.2;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.ScreenPosInputsNode;48;-1200,-80;Float;False;1;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -241,7 +241,7 @@ Node;AmplifyShaderEditor.SimpleMultiplyOpNode;18;688,144;Float;False;3;3;0;FLOAT
 Node;AmplifyShaderEditor.SimpleAddOpNode;20;868,64;Float;False;4;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;70;1024,224;Float;False;Property;_Bias;Bias;4;0;Create;True;0;0;False;0;0;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCRemapNode;6;1024,64;Float;False;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleAddOpNode;86;1264,64;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;95;1264,64;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;90;1280,224;Float;False;Property;_Contrast;Contrast;5;0;Create;True;0;0;False;0;1;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleContrastOpNode;93;1440,64;Float;False;2;1;COLOR;0,0,0,0;False;0;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SaturateNode;71;1696.354,67.05186;Float;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0
@@ -293,9 +293,9 @@ WireConnection;20;1;18;0
 WireConnection;20;2;24;0
 WireConnection;20;3;80;0
 WireConnection;6;0;20;0
-WireConnection;86;0;6;0
-WireConnection;86;1;70;0
-WireConnection;93;1;86;0
+WireConnection;95;0;6;0
+WireConnection;95;1;70;0
+WireConnection;93;1;95;0
 WireConnection;93;0;90;0
 WireConnection;71;0;93;0
 WireConnection;7;0;8;0
@@ -303,4 +303,4 @@ WireConnection;7;1;9;0
 WireConnection;7;2;71;0
 WireConnection;1;0;7;0
 ASEEND*/
-//CHKSM=AB0028D9D631174C7AAC9934C4B743FA342238AD
+//CHKSM=A147711A2977096C90AA3457AB69EEA60464B3FD

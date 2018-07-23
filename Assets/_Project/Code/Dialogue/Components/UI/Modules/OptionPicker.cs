@@ -1,7 +1,7 @@
-﻿using NodeCanvas.DialogueTrees;
+﻿using UnityEngine;
+using NodeCanvas.DialogueTrees;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Sycamore.Dialogue.UI
 {
@@ -16,7 +16,6 @@ namespace Sycamore.Dialogue.UI
 		{
 			if (buttonTemplate == null)
 				Debug.Log ("OptionPicker is missing a button template, so it can't create buttons.");
-			else
 				buttonTemplate.gameObject.SetActive (false);
 		}
 
@@ -36,16 +35,16 @@ namespace Sycamore.Dialogue.UI
 				{
 					button = Instantiate (buttonTemplate, buttonTemplate.transform.parent);
 					button.gameObject.SetActive (true);
-					button.SetAlpha (0f);
+					button.SetTransparency (0f);
 					buttonPool[i] = button;
 				}
 
 				if (i < options.Count)
 				{
 					button.Show (i * staggerDuration);
-					button.Text.text = option.Key.text;
-					button.Button.onClick.RemoveAllListeners ();
-					button.Button.onClick.AddListener (() =>
+					button.SetText (option.Key.text);
+					button.RemoveAllListeners ();
+					button.AddListener (() =>
 					{
 						onOptionPicked.Invoke (option.Value, button);
 					});
