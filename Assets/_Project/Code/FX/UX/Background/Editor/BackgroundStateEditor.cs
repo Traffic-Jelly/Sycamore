@@ -26,6 +26,8 @@ namespace Sycamore.FX.UX
 			managerInstance.SetSpeed (state.speed);
 			managerInstance.SetBias (state.bias);
 			managerInstance.SetContrast (state.contrast);
+
+			Repaint ();
 		}
 	}
 }
