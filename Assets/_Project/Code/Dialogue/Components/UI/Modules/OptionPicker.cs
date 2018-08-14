@@ -7,7 +7,8 @@ namespace Sycamore.Dialogue.UI
 {
 	public class OptionPicker : MonoBehaviour
 	{
-		[SerializeField] private float staggerDuration = 0.1f;
+		[SerializeField] private float staggerInDuration = 0.1f;
+		[SerializeField] private float staggerOutDuration = 0.1f;
 		[SerializeField] private OptionButton buttonTemplate;
 
 		private List<OptionButton> buttonPool;
@@ -41,7 +42,7 @@ namespace Sycamore.Dialogue.UI
 
 				if (i < options.Count)
 				{
-					button.Show (i * staggerDuration);
+					button.Show (i * staggerInDuration);
 					button.SetText (option.Key.text);
 					button.RemoveAllListeners ();
 					button.AddListener (() =>
@@ -50,7 +51,7 @@ namespace Sycamore.Dialogue.UI
 					});
 				}
 				else
-					button.Hide (i * staggerDuration);
+					button.Hide (i * staggerInDuration);
 
 				i++;
 			}
@@ -60,7 +61,7 @@ namespace Sycamore.Dialogue.UI
 		{
 			for (int i = 0; i < buttonPool.Count; i++)
 				if (buttonPool[i] != null && buttonPool[i] != ignore)
-					buttonPool[i].Hide (i * staggerDuration);
+					buttonPool[i].Hide (i * staggerOutDuration);
 		}
 	}
 }

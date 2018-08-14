@@ -57,9 +57,9 @@ namespace Sycamore.Dialogue.UI
 		{
 			canvasGroup.interactable = canvasGroup.blocksRaycasts = interactable;
 		}
-		public override void SetTransparency (float a)
+		public override void SetTransparency (float transparency)
 		{
-			canvasGroup.alpha = a;
+			canvasGroup.alpha = transparency;
 		}
 
 		public override void AddListener (Action onClick)

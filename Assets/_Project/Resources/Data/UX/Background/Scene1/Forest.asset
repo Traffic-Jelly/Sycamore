@@ -15,6 +15,6 @@ MonoBehaviour:
   colorB: {r: 0.11627804, g: 0.6320754, b: 0.29240394, a: 1}
   scale: 0.2
   octaves: 2
-  speed: 0
+  speed: 0.2
   bias: 0
   contrast: 1
