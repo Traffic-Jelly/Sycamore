@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dc7765223c13740bb7c9b3a35f1e45, type: 3}
   m_Name: Lightning
   m_EditorClassIdentifier: 
-  colorA: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
+  colorA: {r: 0, g: 0, b: 0, a: 1}
   colorB: {r: 0.16273585, g: 0.35451347, b: 0.5, a: 1}
   scale: 0.2
   octaves: 1.99

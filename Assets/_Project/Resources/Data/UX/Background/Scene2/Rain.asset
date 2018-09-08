@@ -14,8 +14,8 @@ MonoBehaviour:
   colorA: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
   colorB: {r: 0.16273585, g: 0.35451347, b: 0.5, a: 1}
   scale: 0.2
-  octaves: 2.15
-  speed: 0.22
+  octaves: 2.47
+  speed: 0.37
   rotationSpeed: 0
   bias: 0
   contrast: 1
