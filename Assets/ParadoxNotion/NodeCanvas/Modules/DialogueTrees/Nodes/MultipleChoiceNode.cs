@@ -26,9 +26,11 @@ namespace NodeCanvas.DialogueTrees{
 			}
 		}
 
+		const float DEFAULT_END_WAIT_DURATION = 0.6f;
 
 		[SliderField(0f,10f)]
 		public float availableTime = 0;
+		public float endWaitDuration = 0f;
 		public bool saySelection = false;
 		[SerializeField]
 		private List<Choice> availableChoices = new List<Choice>();
@@ -58,7 +60,8 @@ namespace NodeCanvas.DialogueTrees{
 				return Status.Failure;
 			}
 
-			var optionsInfo = new MultipleChoiceRequestInfo(finalActor, finalOptions, availableTime, OnOptionSelected);
+			var wait = (Mathf.Approximately (endWaitDuration, 0f))? DEFAULT_END_WAIT_DURATION : endWaitDuration;
+			var optionsInfo = new MultipleChoiceRequestInfo(finalActor, finalOptions, availableTime, wait, OnOptionSelected);
 			optionsInfo.showLastStatement = inConnections.Count > 0 && inConnections[0].sourceNode is StatementNode;
 			DialogueTree.RequestMultipleChoices( optionsInfo );
 			return Status.Running;

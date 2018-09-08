@@ -36,7 +36,7 @@ namespace Sycamore.Dialogue.UI
 		}
 		public override void Select ()
 		{
-			animation.Play (selectAnimationName);
+			StartCoroutine (SelectRoutine ());
 		}
 
 		public override void SetText (string text)
@@ -45,7 +45,7 @@ namespace Sycamore.Dialogue.UI
 		}
 		public override void SetInteractable (bool interactable)
 		{
-			canvasGroup.interactable = interactable;
+			canvasGroup.interactable = canvasGroup.blocksRaycasts = interactable;
 		}
 		public override void SetTransparency (float transparency)
 		{
@@ -70,6 +70,11 @@ namespace Sycamore.Dialogue.UI
 		{
 			yield return new WaitForSeconds (delay);
 			animation.Play (hideAnimationName);
+		}
+		private IEnumerator SelectRoutine ()
+		{
+			animation.Play (selectAnimationName);
+			yield break;
 		}
 	}
 }

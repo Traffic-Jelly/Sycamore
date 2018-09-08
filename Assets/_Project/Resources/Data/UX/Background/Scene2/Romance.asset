@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Romance
   m_EditorClassIdentifier: 
   colorA: {r: 0.8509804, g: 0, b: 0.16816458, a: 1}
-  colorB: {r: 1, g: 1, b: 1, a: 1}
+  colorB: {r: 0.9056604, g: 0.5596298, b: 0.5596298, a: 1}
   scale: 0.2
   octaves: 2
-  speed: 0.83
+  speed: 0.46
   bias: -0.6
   contrast: 0.4

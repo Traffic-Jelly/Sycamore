@@ -15,8 +15,10 @@ namespace Sycamore.FX.UX
 		private readonly string BIAS = "_Bias";
 		private readonly string CONTRAST = "_Contrast";
 		private readonly string OFFSET = "_Offset";
+		private readonly string ANGLE = "_Angle";
 
 		[HideInInspector] [SerializeField] private float speed = 0.2f;
+		[HideInInspector] [SerializeField] private float rotationSpeed = 0f;
 
 		private Image _image;
 		public Image Image
@@ -47,6 +49,7 @@ namespace Sycamore.FX.UX
 		private void Update ()
 		{
 			SetOffset (GetOffset () + speed * Time.deltaTime);
+			SetAngle (GetAngle () + rotationSpeed * Time.deltaTime);
 		}
 
 		public void SetColorA (Color color)
@@ -112,6 +115,15 @@ namespace Sycamore.FX.UX
 			return speed;
 		}
 
+		public void SetRotationSpeed (float rotationSpeed)
+		{
+			this.rotationSpeed = rotationSpeed;
+		}
+		public float GetRotationSpeed ()
+		{
+			return rotationSpeed;
+		}
+
 		private void SetOffset (float offset)
 		{
 			Material.SetFloat (OFFSET, offset);
@@ -119,6 +131,15 @@ namespace Sycamore.FX.UX
 		private float GetOffset ()
 		{
 			return Material.GetFloat (OFFSET);
+		}
+
+		private void SetAngle (float angle)
+		{
+			Material.SetFloat (ANGLE, angle);
+		}
+		private float GetAngle ()
+		{
+			return Material.GetFloat (ANGLE);
 		}
 
 		public void TweenState (BackgroundState state, float duration, AnimationCurve curve = null)
@@ -129,6 +150,7 @@ namespace Sycamore.FX.UX
 			TweenOctaves (state.octaves, duration, curve);
 			TweenSpeed (state.speed, duration, curve);
 			TweenBias (state.bias, duration, curve);
+			TweenRotationSpeed (state.rotationSpeed, duration, curve);
 		}
 		public void TweenState (BackgroundState state, float duration, Ease ease)
 		{
@@ -138,6 +160,7 @@ namespace Sycamore.FX.UX
 			TweenOctaves (state.octaves, duration, ease);
 			TweenSpeed (state.speed, duration, ease);
 			TweenBias (state.bias, duration, ease);
+			TweenRotationSpeed (state.rotationSpeed, duration, ease);
 		}
 
 		public void TweenColorA (Color to, float duration, AnimationCurve curve = null)
@@ -221,6 +244,18 @@ namespace Sycamore.FX.UX
 		public void TweenSpeed (float to, float duration, Ease ease)
 		{
 			var t = DOTween.To (() => GetSpeed (), (s) => SetSpeed (s), to, duration);
+			t.SetEase (ease);
+		}
+
+		public void TweenRotationSpeed (float to, float duration, AnimationCurve curve = null)
+		{
+			var t = DOTween.To (() => GetRotationSpeed (), (s) => SetRotationSpeed (s), to, duration);
+			if (curve != null)
+				t.SetEase (curve);
+		}
+		public void TweenRotationSpeed (float to, float duration, Ease ease)
+		{
+			var t = DOTween.To (() => GetRotationSpeed (), (s) => SetRotationSpeed (s), to, duration);
 			t.SetEase (ease);
 		}
 	}

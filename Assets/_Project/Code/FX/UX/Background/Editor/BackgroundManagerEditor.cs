@@ -60,6 +60,14 @@ namespace Sycamore.FX.UX
 				_target.SetSpeed (speed);
 			}
 
+			EditorGUI.BeginChangeCheck ();
+			var rotationSpeed = EditorGUILayout.FloatField (new GUIContent ("Rotation Speed"), _target.GetRotationSpeed ());
+			if (EditorGUI.EndChangeCheck ())
+			{
+				Undo.RecordObject (_target, "Changed Rotation Speed");
+				_target.SetRotationSpeed (rotationSpeed);
+			}
+
 			Repaint ();
 		}
 	}
