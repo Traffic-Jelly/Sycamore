@@ -11,6 +11,7 @@ namespace Sycamore.FX.UX
 		[Range (1f, 3f)]
 		public float octaves = 2f;
 		public float speed = 1f;
+		public float rotationSpeed = 0f;
 		public float bias = 1f;
 		public float contrast = 1f;
 	}

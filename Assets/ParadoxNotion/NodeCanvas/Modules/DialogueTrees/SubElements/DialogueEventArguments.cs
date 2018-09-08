@@ -26,6 +26,7 @@ namespace NodeCanvas.DialogueTrees{
 
 		///The actor related. This is usually the actor that will also say the options
 		public IDialogueActor actor;
+		public float endWaitDuration = 0.6f;
 		///The available choice option. Key: The statement, Value: the child index of the option
 		public Dictionary<IStatement, int> options;
 		///The available time for a choice
@@ -43,10 +44,11 @@ namespace NodeCanvas.DialogueTrees{
 			this.SelectOption = callback;
 		}
 
-		public MultipleChoiceRequestInfo(IDialogueActor actor, Dictionary<IStatement, int> options, float availableTime, Action<int> callback){
+		public MultipleChoiceRequestInfo(IDialogueActor actor, Dictionary<IStatement, int> options, float availableTime, float endWaitDuration, Action<int> callback){
 			this.actor = actor;
 			this.options = options;
 			this.availableTime = availableTime;
+			this.endWaitDuration = endWaitDuration;
 			this.SelectOption = callback;
 		}
 	}

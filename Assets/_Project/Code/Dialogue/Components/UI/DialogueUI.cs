@@ -62,12 +62,17 @@ namespace Sycamore.Dialogue.UI
 			if (info.showLastStatement)
 				dialogueWriter.WriteInstant (dialogueWriter.LastString);
 
-			optionPicker.CreateOptions (info.options, (optionIndex, optionButton) => 
+			optionPicker.CreateOptions (info.options, (optionIndex, optionButton) =>
 			{
-				info.SelectOption (optionIndex);
-				optionButton.Select ();
 				optionPicker.HideOptions (optionButton);
+				optionButton.Select ();
+				StartCoroutine (DelayedOptionSelect (optionIndex, info.endWaitDuration, info));
 			});
+		}
+		IEnumerator DelayedOptionSelect (int index, float delay, MultipleChoiceRequestInfo info)
+		{
+			yield return new WaitForSeconds (delay);
+			info.SelectOption (index);
 		}
 
 		private IEnumerator SubtitlesRequestRoutine (SubtitlesRequestInfo info)
@@ -77,7 +82,7 @@ namespace Sycamore.Dialogue.UI
 			var audio = info.statement.audio;
 			var speed = info.statement.speed;
 			var holdDuration = info.statement.holdDuration;
-			var endWaitDuration = info.statement.endWaitDuration;
+			var endDuration = info.statement.endDuration;
 			var fadeInDuration = info.statement.fadeInDuration;
 			var fadeOutDuration = info.statement.fadeOutDuration;
 			var additive = info.statement.additive;
@@ -123,7 +128,7 @@ namespace Sycamore.Dialogue.UI
 				yield return Fade (0f, fadeOutDuration).WaitForCompletion ();
 			}
 
-			yield return new WaitForSeconds (endWaitDuration);
+			yield return new WaitForSeconds (endDuration);
 
 			info.Continue ();
 		}

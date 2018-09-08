@@ -49,8 +49,8 @@ namespace NodeCanvas.DialogueTrees{
 			statement.inputWaitMode = (InputWaitMode)UnityEditor.EditorGUILayout.EnumPopup ("Input Wait Mode", statement.inputWaitMode);
 			statement.textAlignment = (TextAlignmentOptions)UnityEditor.EditorGUILayout.EnumPopup ("Text Alignment", statement.textAlignment);
 			statement.speed = UnityEditor.EditorGUILayout.FloatField ("Speed", statement.speed);
-			statement.holdDuration = UnityEditor.EditorGUILayout.FloatField ("Hold Duration", statement.holdDuration);
-			statement.endWaitDuration = UnityEditor.EditorGUILayout.FloatField ("End Wait Duration", statement.endWaitDuration);
+			statement.holdDuration = UnityEditor.EditorGUILayout.FloatField (new GUIContent ("Hold Duration", "Time to wait before text disappears"), statement.holdDuration);
+			statement.endDuration = UnityEditor.EditorGUILayout.FloatField (new GUIContent ("End Duration", "Time to wait after text dissappears"), statement.endDuration);
 			statement.fadeInDuration = UnityEditor.EditorGUILayout.FloatField ("Fade In Duration", statement.fadeInDuration);
 			statement.fadeOutDuration = UnityEditor.EditorGUILayout.FloatField ("Fade Out Duration", statement.fadeOutDuration);
 			statement.meta = UnityEditor.EditorGUILayout.TextField("Metadata", statement.meta);

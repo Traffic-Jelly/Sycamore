@@ -14,7 +14,7 @@ namespace NodeCanvas.DialogueTrees
 		bool skippable { get; }
 		float speed { get; }
 		float holdDuration { get; }
-		float endWaitDuration { get; }
+		float endDuration { get; }
 		float fadeInDuration { get; }
 		float fadeOutDuration { get; }
 		InputWaitMode inputWaitMode { get; }
@@ -35,13 +35,13 @@ namespace NodeCanvas.DialogueTrees
 		[SerializeField]
 		private bool _skippable = true;
 		[SerializeField]
-		private InputWaitMode _inputWaitMode = InputWaitMode.End;
+		private InputWaitMode _inputWaitMode = InputWaitMode.None;
 		[SerializeField]
 		private TextAlignmentOptions _textAlignment = TextAlignmentOptions.Top;
 		[SerializeField]
 		private float _speed = 1f;
 		[SerializeField]
-		private float _holdDuration;
+		private float _holdDuration = 0.4f;
 		[SerializeField]
 		private float _endDuration;
 		[SerializeField]
@@ -99,10 +99,10 @@ namespace NodeCanvas.DialogueTrees
 			set { _holdDuration = value; }
 		}
 
-		public float endWaitDuration
+		public float endDuration
 		{
-			get { return _holdDuration; }
-			set { _holdDuration = value; }
+			get { return _endDuration; }
+			set { _endDuration = value; }
 		}
 
 		public float fadeInDuration

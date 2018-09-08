@@ -3,6 +3,7 @@ using TMPro;
 using System;
 using System.Collections;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Sycamore.Dialogue.UI
 {
@@ -71,7 +72,6 @@ namespace Sycamore.Dialogue.UI
 		{
 			string startText = additive ? (LastString + "\n") : string.Empty;
 			string finalText = startText + s;
-			int textLength = finalText.Length;
 
 			// Have to store and check whether there's been input outside of the loop below
 			// because it will be pausing alot for the different typing delays.
@@ -85,6 +85,7 @@ namespace Sycamore.Dialogue.UI
 			var finalDelayWait = new WaitForSeconds (typingDelay.finalDelay * waitMultiplier);
 
 			int startIndex = startText.Length;
+			int textLength = finalText.Length;
 			for (int i = startIndex; i < textLength; i++)
 			{
 				if (anyKeyDown)

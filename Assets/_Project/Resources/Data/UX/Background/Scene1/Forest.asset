@@ -16,5 +16,6 @@ MonoBehaviour:
   scale: 0.2
   octaves: 2
   speed: 0.2
+  rotationSpeed: 0
   bias: 0
   contrast: 1

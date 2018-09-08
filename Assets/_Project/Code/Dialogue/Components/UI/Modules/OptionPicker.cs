@@ -2,6 +2,7 @@
 using NodeCanvas.DialogueTrees;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Sycamore.Dialogue.UI
 {
@@ -62,6 +63,16 @@ namespace Sycamore.Dialogue.UI
 			for (int i = 0; i < buttonPool.Count; i++)
 				if (buttonPool[i] != null && buttonPool[i] != ignore)
 					buttonPool[i].Hide (i * staggerOutDuration);
+		}
+
+		private void DelayedInvoke (Action action, float delay)
+		{
+			StartCoroutine (DelayedInvokeRoutine (action, delay));
+		}
+		private IEnumerator DelayedInvokeRoutine (Action action, float delay)
+		{
+			yield return new WaitForSeconds (delay);
+			action.Invoke ();
 		}
 	}
 }
